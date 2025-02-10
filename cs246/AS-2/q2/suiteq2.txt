@@ -1,0 +1,119 @@
+1.Initialization:
+
+b g0 WiCS
+b g1 Faculty
+b g2 Staff
+b g3 Students
+b g4 CS_Students
+b g5 SE_Students
+b g6 Alumni
+b g7 Research_Group
+b g8 Admin_Team
+
+b g9 NewGroup  // New: Test New group
+
+2.Adding email addresses:
+
+aa g0 admin@wics.com
+aa g0 contact@wics.com
+aa g1 prof1@univ.com
+aa g1 prof2@univ.com
+aa g1 chair@univ.com
+aa g2 staff1@univ.com
+aa g3 student1@univ.com
+aa g4 cs1@univ.com
+aa g5 se1@univ.com
+aa g6 alumni1@univ.com
+aa g7 researcher1@univ.com
+aa g8 admin1@univ.com
+
+3.Adding Subgroups:
+
+ag g0 g1
+ag g0 g2
+ag g0 g3
+ag g3 g4
+ag g3 g5
+ag g0 g6
+ag g0 g7
+ag g0 g8
+ag g0 g9  # New: Adding new group
+
+4.print intital structure:
+
+p g0
+
+5.Search email addresses which exist:
+
+sa g0 admin@wics.com
+sa g3 student1@univ.com
+sa g4 cs1@univ.com
+sa g5 se1@univ.com
+
+6.Search email addresses which do not exist:
+
+sa g0 nonexisting@univ.com
+sa g1 missingprof@univ.com
+sa g3 nothing@univ.com
+
+7.Search groups  which exist:
+
+sg g0 Faculty
+sg g0 Students
+sg g3 CS_Students
+sg g3 SE_Students
+
+8.Search groups which do not exist:
+
+sg g0 FakeGroup
+sg g1 Missing_Dept
+
+9.Removing email addresses:
+
+ra g0 admin@wics.com
+ra g3 student1@univ.com
+ra g4 cs1@univ.com
+ra g5 se1@univ.com
+
+10.Removing Subgroups:
+
+rg g0 Faculty
+rg g0 Research_Group
+rg g0 Admin_Team
+rg g3 CS_Students
+rg g3 SE_Students
+
+11.Print Final structure:
+
+p g0
+
+Edge Cases:
+
+Removing non-existing email:
+ra g0 nonexisting@univ.com
+
+Removing non-existing subgroup:
+rg g0 FakeGroup
+
+Adding duplicate email addresses:
+aa g1 prof2@univ.com
+aa g1 prof2@univ.com
+
+Add duplicate groups:
+ag g0 g1
+ag g0 g1
+ag g3 g4
+ag g3 g4
+
+Remove the last email in a group:
+ra g1 prof1@univ.com
+ra g1 prof2@univ.com
+ra g1 chair@univ.com
+
+Remove the last subgroup:
+rg g3 g4
+rg g3 g5
+
+Remove from an already empty group:
+ra g9 nonexisting@univ.com
+rg g9 FakeGroup

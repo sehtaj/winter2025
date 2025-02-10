@@ -1,0 +1,54 @@
+
+Adding Rectangles
+a 0 r 0 0 5 10     Add red rectangle at (0,0) with height 5 and width 10 to canvas 0
+a 0 g 5 5 3 4      Add green rectangle at (5,5) with height 3 and width 4 to canvas 0
+p c 0               Print canvas 0, should show 2 rectangles
+
+
+
+Removing Rectangles
+r 0 0               Remove first rectangle from canvas 0
+p c 0               Should show only the green rectangle now
+r 0 1               Try removing a non-existent rectangle (should do nothing)
+p c 0               Should remain unchanged
+
+Changing Rectangle Properties
+
+s c 0 0 b           Change colour of first rectangle to blue
+p r 0 0             Print updated rectangle, should show new colour
+
+s t 0 0 2 3         Move the rectangle by (2,3)
+p r 0 0             Should show updated position
+
+s s 0 0 2 2         Scale rectangle by 2x2
+p r 0 0             Should show updated dimensions
+
+
+Copying and Moving Canvases
+c c 0               Copy canvas 0
+p c 0               Print original canvas
+p c 5               Print copied canvas (should be identical)
+
+c m 0               Move canvas 0
+p c 0               Should still exist but moved to another ID
+p c 6               Should show the moved canvas
+
+
+Copy and Move Assignment
+= c 1 0             Copy canvas 0 to canvas 1
+p c 1               Should be identical to canvas 0
+
+= m 2 0             Move canvas 0 to canvas 2
+p c 2               Should show the moved canvas
+p c 0               Canvas 0 should now be empty
+
+Edge Cases
+
+
+r 3 0               Try removing from an empty canvas (should do nothing)
+s c 3 0 y           Try changing color of non-existent rectangle (should do nothing)
+s t 3 0 5 5         Try translating non-existent rectangle (should do nothing)
+s s 3 0 2 2         Try scaling non-existent rectangle (should do nothing)
+
+p c 3               Print empty canvas, should show nothing
+p r 3 0             Try printing non-existent rectangle (should do nothing)
