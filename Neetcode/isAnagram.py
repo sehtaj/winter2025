@@ -28,14 +28,13 @@ def isAnagram(s,t):
     for key in seen:
         if seen[key] != 0:
             return False
-    
     return True
 
 #edge cases
 isAnagram("", " ") #False
 isAnagram("carrace", "RaceCar") #True
-isAnagram("ab", "ac")#False
 isAnagram("a", "a") #True
+isAnagram("a", "b") #False
 
 
 
