@@ -28,6 +28,7 @@ def isAnagram(s,t):
     for key in seen:
         if seen[key] != 0:
             return False
+        
     return True
 
 #edge cases
