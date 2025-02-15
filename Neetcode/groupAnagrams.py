@@ -25,12 +25,12 @@ def groupAnagrams(strs):
 
 # Edge Cases
 
-#print(groupAnagrams([])) 
+#groupAnagrams([])
 
-#print(groupAnagrams(["a"]))  
+#groupAnagrams(["a"])
 
-#print(groupAnagrams(["abc", "bca", "bac", "cab", "cba", "acb"]))  
+#groupAnagrams(["abc", "bca", "bac", "cab", "cba", "acb"])
 
-#print(groupAnagrams(["aa", "bb", "cc"]))  
+#groupAnagrams(["aa", "bb", "cc"])  
 
-#print(groupAnagrams(["ab", "ba", "abc", "bac", "cba", "dog", "god"]))  
+#groupAnagrams(["ab", "ba", "abc", "bac", "cba", "dog", "god"])
