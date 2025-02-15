@@ -4,8 +4,14 @@
 #include <iostream>
 
 class Rectangle {
+	/* Add your private variables and functions HERE */    
+	public:
+	enum class Colour { Red, Green, Blue, Orange, Yellow, Black, White };
 
-    /* Add your private variables and functions HERE */    
+	private:
+	Point upperLeft_;
+    int height_, width_;
+    Colour colour_;
 
 public:
 	enum class Colour { Red, Green, Blue, Orange, Yellow, Black, White };

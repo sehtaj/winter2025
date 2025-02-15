@@ -5,6 +5,10 @@
 class Canvas {
 
     /* Add you private variables and functions HERE */
+	int width_, height_;
+    std::vector<Rectangle> rectangles;
+
+    void updateDimensions(); // Adjust canvas size to fit all rectangles
 
 public:
 	Canvas();

@@ -1,6 +1,8 @@
 #ifndef _CALL_H
 #define _CALL_H
+
 #include "date.h"
+#include <iostream>
 
 struct Call {
     Date date;
@@ -9,6 +11,6 @@ struct Call {
 };
 
 std::istream & operator>>( std::istream & in, Call & call );
-std::ostream & operator<<( std::ostream & out, Call call );
+std::ostream & operator<<( std::ostream & out, const Call &call );
 
 #endif

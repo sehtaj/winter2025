@@ -1,72 +1,50 @@
-#ifndef _GROUP_H
-#define _GROUP_H
+#ifndef GROUP_H
+#define GROUP_H
+
 #include <string>
+#include <iostream>
 
 class Group {
+private:
+    std::string name; 
 
-    /* Add your private variables and functions HERE */
+    class EmailNode;
+    class GroupNode;
+    EmailNode *emails;  
+    GroupNode *subgroups;  
+    void deleteEmails();
+    void deleteGroups();   
 
 public:
-	Group( const std::string & name );
-	~Group();
-	std::string name() const;    // return the group's name
-	std::string emails() const;  // return a string containing all of the email addresses in the group
-	void addGroup( Group * );   // add the group as a subgroup to this one
-	void addAddress( const std::string & ); // add the given email address to the group
-	bool removeGroup( const std::string & ); // remove the first occurrence of the subgroup with that name
-	bool removeAddress( const std::string & ); // remove the first occurrence of the address
+    Group(const std::string &name); 
+    ~Group();  
 
-	class EmailNode {
+    std::string getName() const;  
+    void addAddress(const std::string &email); 
+    void addGroup(Group *group); 
+    bool removeAddress(const std::string &email); 
+    bool removeGroup(const std::string &groupName);
+    void print() const; 
 
-        /* Add your private variables and functions HERE */
+    class EmailNode {
+    public:
+        std::string email;
+        EmailNode *emails; 
+        EmailNode *next;
 
-        friend class Group;
-	public:
-		EmailNode( const std::string &  );
-		~EmailNode();
-		void addAddress( const std::string & );
-		bool removeAddress( const std::string & );
-		std::string address() const;
-		EmailNode * findAddress( const std::string & );
-	};
+        EmailNode(const std::string &email);
+        ~EmailNode();
+    };
+    class GroupNode {
+    public:
+        Group *subgroup;
+        GroupNode *subgroups; 
+        GroupNode *next;
 
-	class GroupNode {
-
-        /* Add your private variables and functions HERE */
-
-        friend class Group;
-	public:
-		GroupNode( Group * );
-		~GroupNode();
-		Group * group() const;
-
-		void addGroup( GroupNode* ); // add to the subgroup, in lexicographic order
-		bool removeGroup( GroupNode* ); // remove from the linked list
-
-		// Remove the first occurrence of the specified email address from the group
-		bool removeAddress( const std::string & ); 
-
-		// Remove the first occurrence of the group whose name is the specified string
-		bool removeGroup( const std::string & );
-
-		// Find the node holding the group with the specified name, or nullptr
-		GroupNode * findGroup( const std::string & ); 
-
-		// Find the node holding the group that has the specified address, or nullptr
-		GroupNode * findAddress( const std::string & ); 
-	};	
-
-	// Return the address of the first node containing the subgroup 
-	// with the specified name or nullptr if not found
-	GroupNode * findGroup( const std::string & ); 
-
-	// Return the address of the first node containing the subgroup 
-	// with the specified email address or nullptr if not found
-	EmailNode * findAddress( const std::string & ); 
-
+        GroupNode(Group *subgroup);
+        ~GroupNode();
+    };
+    friend std::ostream &operator<<(std::ostream &out, const Group &group);
 };
 
-std::ostream & operator<<( std::ostream &, Group & );
-std::ostream & operator<<(std::ostream &, Group::EmailNode & );
-std::ostream & operator<<(std::ostream &, Group::GroupNode & );
 #endif

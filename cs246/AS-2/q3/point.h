@@ -5,6 +5,7 @@
 class Point {
 
     /* Add your private variables and functions HERE */
+	int a, b;
 
 public:
 	Point( int x = 0, int y = 0 );
