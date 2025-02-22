@@ -5,7 +5,6 @@
 
 class Plan {
 private:
-    std::vector<Call> calls;
     const int monthlyFee = 25;
     const double extraCharge = 0.50;
     
@@ -16,6 +15,8 @@ private:
 public:
     Plan();
     ~Plan();
+    
+    std::vector<Call> calls;
 
     // Adds the call to the month's current list of calls.
     void add( const Call &call ); 
@@ -27,7 +28,7 @@ public:
 
 // Outputs the current month's calls, ordered by date and then by start time 
 // within date. 
-std::ostream & operator<<( std::ostream & out, const Plan & plan );
+std::ostream & operator<<( std::ostream & out, Plan & plan );
 
 #endif
 

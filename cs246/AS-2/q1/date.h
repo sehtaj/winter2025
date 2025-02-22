@@ -17,3 +17,4 @@ std::ostream & operator<<( std::ostream & out, Date &date );
 std::ostream & operator<<( std::ostream & out, Date::DayOfWeek day );
 
 #endif
+

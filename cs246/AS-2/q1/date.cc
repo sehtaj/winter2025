@@ -10,22 +10,18 @@ bool Date::operator==(Date other) {
 }
 
 bool Date::operator<(Date other) {
-    if (year != other.year) return year < other.year;
-    if (month != other.month) return month < other.month;
+    if (year != other.year) {
+        return year < other.year;
+    }
+    if (month != other.month){
+        return month < other.month;
+    }
     return day < other.day;
 }
 
-
 istream &operator>>(std::istream &in, Date &date) {
-    char sep1, sep2;
-    in >> date.year >> sep1 >> date.month >> sep2 >> date.day;
-    
-    if (sep1 != '/' || sep2 != '/') {
-        std::cerr << "Invalid date format! Expected format: YYYY/MM/DD\n";
-        in.clear();       
-        return in;
-    }
-    return in;
+   
+
 }
 
 ostream &operator<<(ostream &out, Date &date) {
@@ -33,12 +29,7 @@ ostream &operator<<(ostream &out, Date &date) {
     return out;
 }
 
-std::ostream &operator<<(std::ostream &out, const Date &date) {
-    out << date.year << "/" << date.month << "/" << date.day;
-    return out;
-}
-
-std::ostream &operator<<(std::ostream &out, Date::DayOfWeek day) {
+ostream &operator<<(std::ostream &out, Date::DayOfWeek day) {
     const char *dayNames[] = {"Sunday", "Monday", "Tuesday", "Wednesday",
                               "Thursday", "Friday", "Saturday"};
     out << dayNames[static_cast<int>(day)];

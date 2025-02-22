@@ -57,13 +57,13 @@ void Plan::calculateBill() {
         }
     }
 
-    cout << "Total Charge for " << currentMonth << ": $" 
+    cout << "Total Charge for Month " << currentMonth << ": $" 
          << fixed << setprecision(2) << totalCost << endl;
 
     calls.clear();
 }
 
-ostream &operator<<(ostream &out, const Plan &plan) {
+ostream &operator<<(ostream &out, Plan &plan) {
     for (size_t i = 0; i < plan.calls.size(); i++) {
         out << plan.calls[i] << endl;
     }

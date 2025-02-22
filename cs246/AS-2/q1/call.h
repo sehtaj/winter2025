@@ -11,6 +11,6 @@ struct Call {
 };
 
 std::istream & operator>>( std::istream & in, Call & call );
-std::ostream & operator<<( std::ostream & out, const Call &call );
+std::ostream & operator<<( std::ostream & out, Call &call );
 
 #endif

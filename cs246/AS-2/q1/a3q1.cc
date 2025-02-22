@@ -1,4 +1,8 @@
 #include "plan.h"
+#include<iostream>
+#include<string>
+
+using namespace std;
 
 int main() {
 	Date date{2018, 9, 26}; 
@@ -6,18 +10,24 @@ int main() {
 	Plan plan;
     bool done = false;
 
+	string stored;	
+
 	while ( ! done ) {
 		char command;
-		std::cin >> command;
-		if ( std::cin.eof() ) break;
+		cin >> command;
+		cin.ignore();
+		if ( cin.eof() ) break;
 
 		switch( command ) {
 			case '+':
-				std::cin >> call;
+				//cin >> call;
+				cout << "getline started";
+				getline(cin,stored);
+				cout << "stored: " << stored;
 				plan.add( call );
 				break;
 			case 'p':
-				std::cout << plan;
+				cout << plan;
 				break;
 			case 'b':
 				plan.calculateBill();
@@ -26,7 +36,7 @@ int main() {
 				done = true;
 				break;
 			default:
-				std::cerr << "Unrecognized command: '" << command << "'" << std::endl;
+				cerr << "Unrecognized command: '" << command << "'" << endl;
 		} // switch
 	} // while
 	return 0;
