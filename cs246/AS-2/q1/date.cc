@@ -1,5 +1,6 @@
 #include "date.h"
 #include <iomanip>
+#include<sstream>
 
 using namespace std;
 
@@ -20,8 +21,34 @@ bool Date::operator<(Date other) {
 }
 
 istream &operator>>(std::istream &in, Date &date) {
-   
-
+    string stored;
+    getline(in,stored);
+    string temp;
+    istringstream iss(temp);
+    int counter = 0;
+    
+    int len = stored.length();
+    for (int i = 0 ; i < len ; i++) {
+        if (stored[i] == '/' || stored[i] == ' ') {
+            iss.str(temp);
+            iss.clear();
+            if (counter == 0) {
+                iss >> date.year;
+            }
+            else if ( counter == 1) {
+                iss >> date.month;
+                
+            } else {
+                iss >> date.day;
+                break;
+            }
+            temp = "";
+            counter += 1;
+        } else {
+            temp += stored[i];
+        }
+    }
+    return in;
 }
 
 ostream &operator<<(ostream &out, Date &date) {
