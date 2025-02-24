@@ -7,14 +7,13 @@ struct Date {
 
     int year, month, day;
     Date( int y, int m, int d );
-    DayOfWeek getDay(); // Requires date to be in Gregorian calendar.
-    bool operator==( Date other );
-    bool operator<( Date other );
+    DayOfWeek getDay() const; // Requires date to be in Gregorian calendar.
+    bool operator==( Date other ) const;
+    bool operator<( Date other ) const;
 };
 
 std::istream & operator>>( std::istream & in, Date & date );
-std::ostream & operator<<( std::ostream & out, Date &date );
+std::ostream & operator<<( std::ostream & out, Date date );
 std::ostream & operator<<( std::ostream & out, Date::DayOfWeek day );
 
 #endif
-
