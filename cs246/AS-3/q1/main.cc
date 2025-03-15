@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "a4q1.h"
 
 using namespace std;
 
@@ -8,39 +9,34 @@ using namespace std;
 
 // Read and construct expression object. Returns a pointer to a heap-allocated
 // object (caller must delete it).
-istream &operator>>(istream &in, Expr *&e) {
-  while (in >> s) {
-    istringstream ss(s);
-    int n;
-    if (ss >> n) {
-    }
-    else if (s == "NEG" || s == "ABS") {
-    }
-    else if (s == "+" || s == "-" || s == "*" || s == "/") {
-    }
-    else if (s == "done") {
-    }
-    else {
-    }
-  }
-  return in;
-}
 
-int main () {
-  string s;
+int main() {
+    string s;
+    Expr *e;
 
-  Expr *e;
-  cin >> e;
+    cin >> e;
+    
+    // Command interpreter
+    while (cin >> s) {
+        if (s == "eval") {
+            int result = e->evaluate();
+            cout << result << endl;
+        } else if (s == "set") {
+            string var;
+            int value;
+            cin >> var >> value;
+            e->set(var, value);
+        } else if (s == "unset") {
+            string var;
+            cin >> var;
+            e->unset(var);
+        } else if (s == "print") {
+            cout << e->prettyprint() << endl;
+        } else {
+            cout << "Unknown command: " << s << endl;
+        }
+    }
 
-  // Command interpreter
-  while (cin >> s) {
-    if (s == "eval") {
-    }
-    else if (s == "set") {
-    }
-    else if (s == "unset") {
-    }
-    else if (s == "print") {
-    }
-  }
+    delete e;
+    return 0;
 }
