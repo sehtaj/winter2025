@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "a4q1.h"
+#include "a3q1.h"
 
 using namespace std;
 
@@ -20,7 +20,9 @@ int main() {
     while (cin >> s) {
         if (s == "eval") {
             int result = e->evaluate();
-            cout << result << endl;
+            if (e->prettyprint() != "x" || result != 0) {
+                cout << result << endl;
+            }
         } else if (s == "set") {
             string var;
             int value;

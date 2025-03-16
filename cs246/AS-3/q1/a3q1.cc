@@ -1,4 +1,5 @@
-#include "a4q1.h"
+#include "a3q1.h"
+
 
 
 // IntExpr class
@@ -20,8 +21,14 @@ void IntExpr::unset(string var) {}
 VarExpr::VarExpr(string name) : name(name), isSet(false), value(0) {}
 
 int VarExpr::evaluate() {
+    bool evaluationError = false;
+
     if (!isSet) {
         cerr << name << " has no value." << endl;
+        evaluationError = true;
+        return 0; 
+    }
+    if (evaluationError) {
         return 0;
     }
     return value;
