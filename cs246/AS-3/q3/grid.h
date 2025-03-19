@@ -4,8 +4,10 @@
 #include <vector>
 #include "cell.h"
 
+using namespace std;
+
 class Grid {
-  std::vector<std::vector<Cell>> theGrid;  // The actual grid.
+  vector<vector<Cell>> theGrid;  // The actual grid.
 
   // Add private members, if necessary.
 
@@ -25,7 +27,7 @@ class Grid {
 
   void turnOn(int i, int j);  // Sets cell at i, j to living.
 
-  friend std::ostream& ::operator<<(std::ostream &out, const Grid &g);
+  friend ostream& operator<<(ostream &out, const Grid &g);
 };
 
 #endif

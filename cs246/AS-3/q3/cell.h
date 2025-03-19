@@ -2,12 +2,15 @@
 #define __CELL_H__
 #include <iostream>
 
+using namespace std;
+
 const int maxNeighbours = 8;
 
 class Cell {
   bool isAlive;
   int numNeighbours;
   Cell *neighbours[maxNeighbours];
+  int aliveNeighbours;
 
   // Add other private members if necessary
 
@@ -29,7 +32,7 @@ class Cell {
   void recalculate();       // Reassess my living-or-dead status, based on
                             // info from neighbours.
 
-  friend std::ostream& ::operator<<(std::ostream &out, const Cell &c);
+  friend ostream& operator<<(ostream &out, const Cell &c);
 };
 
 #endif
