@@ -1,7 +1,5 @@
 #include "a3q1.h"
 
-
-
 // IntExpr class
 IntExpr::IntExpr(int value) : value(value) {}
 
