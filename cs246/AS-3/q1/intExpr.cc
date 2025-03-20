@@ -1,6 +1,5 @@
 #include "intExpr.h"
 
-
 // IntExpr class
 IntExpr::IntExpr(int value) : value(value) {}
 

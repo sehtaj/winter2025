@@ -1,9 +1,6 @@
 #include "binaryExpr.h"
 #include "a3q1.h"
 
-
-
-
 // BinaryExpr class
 BinaryExpr::BinaryExpr(string op, Expr *left, Expr *right) : op(op), left(left), right(right) {}
 

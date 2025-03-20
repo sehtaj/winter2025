@@ -1,6 +1,5 @@
 #include "a3q1.h"
 
-
 class UnaryExpr : public Expr {
     string op;
     Expr *operand;

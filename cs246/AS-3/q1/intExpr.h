@@ -1,6 +1,5 @@
 #include "a3q1.h"
 
-
 class IntExpr : public Expr {
     int value;
 public:

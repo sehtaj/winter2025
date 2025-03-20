@@ -1,8 +1,6 @@
 #include "unaryExpr.h"
 #include "a3q1.h"
 
-
-
 // UnaryExpr class
 UnaryExpr::UnaryExpr(string op, Expr *operand) : op(op), operand(operand) {}
 

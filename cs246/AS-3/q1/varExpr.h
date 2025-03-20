@@ -1,6 +1,5 @@
 #include "a3q1.h"
 
-
 class VarExpr : public Expr {
     string name;
     bool isSet;

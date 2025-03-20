@@ -1,8 +1,6 @@
 #include "varExpr.h"
 #include "a3q1.h"
 
-
-
 // VarExpr class
 VarExpr::VarExpr(string name) : name(name), isSet(false), value(0) {}
 
