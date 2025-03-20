@@ -106,7 +106,6 @@ void Grid::tick() {
             cell.alertNeighbours();
         }
     }
-
     for (auto &i : theGrid) {
         for (auto &cell : i) {
             cell.recalculate();

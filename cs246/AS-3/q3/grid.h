@@ -25,7 +25,7 @@ class Grid {
                     // Tells each cell to alert its neighbours, and then
                     // tells each cell to recalculate.
 
-  void turnOn(int i, int j);  // Sets cell at i, j to living.
+  void turnOn(int i, int j); // Sets cell at i, j to living.
 
   friend ostream& operator<<(ostream &out, const Grid &g);
 };
