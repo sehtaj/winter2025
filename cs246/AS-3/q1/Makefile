@@ -1,18 +1,28 @@
+# Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Werror=vla -g
-EXEC = a3q1
-OBJS = main_q1.o a3q1.o
-DEPENDS = a3q1.h
 
+# Executable name
+EXEC = evaluate
+
+# Source files
+SRCS = main_q1.cc a3q1.cc varExpr.cc intExpr.cc unaryExpr.cc binaryExpr.cc
+
+# Object files (replace .cc with .o for each source file)
+OBJS = $(SRCS:.cc=.o)
+
+# Header files (dependencies)
+DEPENDS = varExpr.h intExpr.h unaryExpr.h binaryExpr.h a3q1.h
+
+# Build target
 $(EXEC): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-main_q1.o: main_q1.cc $(DEPENDS)
-	$(CXX) $(CXXFLAGS) -c main_q1.cc
+# Compile each .cc file into .o
+%.o: %.cc $(DEPENDS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-a3q1.o: a3q1.cc $(DEPENDS)
-	$(CXX) $(CXXFLAGS) -c a3q1.cc
-
+# Clean up
 clean:
 	rm -f $(OBJS) $(EXEC)
 
