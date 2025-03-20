@@ -23,25 +23,25 @@ void Grid::init(int n) {
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
 
-            if (i == 0 && j == 0) {
+            if ((i == 0) && (j == 0)) {
                 theGrid[i][j].addNeighbour(&theGrid[0][1]);
                 theGrid[i][j].addNeighbour(&theGrid[1][0]);
                 theGrid[i][j].addNeighbour(&theGrid[1][1]);
             }
 
-            else if (i == 0 && j == n - 1) {
+            else if ((i == 0) && (j == n - 1)) {
                 theGrid[i][j].addNeighbour(&theGrid[0][n - 2]);
                 theGrid[i][j].addNeighbour(&theGrid[1][n - 1]);
                 theGrid[i][j].addNeighbour(&theGrid[1][n - 2]);
             }
 
-            else if (i == n - 1 && j == 0) {
+            else if ((i == n - 1) && (j == 0)) {
                 theGrid[i][j].addNeighbour(&theGrid[n - 2][0]);
                 theGrid[i][j].addNeighbour(&theGrid[n - 1][1]);
                 theGrid[i][j].addNeighbour(&theGrid[n - 2][1]);
             }
 
-            else if (i == n - 1 && j == n - 1) {
+            else if ((i == n - 1) && (j == n - 1)) {
                 theGrid[i][j].addNeighbour(&theGrid[n - 2][n - 1]);
                 theGrid[i][j].addNeighbour(&theGrid[n - 1][n - 2]);
                 theGrid[i][j].addNeighbour(&theGrid[n - 2][n - 2]);
