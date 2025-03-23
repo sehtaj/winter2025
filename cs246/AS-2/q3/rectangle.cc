@@ -1,72 +1,98 @@
 #include "rectangle.h"
 
 Rectangle::Rectangle(Point upperLeft, int height, int width, Rectangle::Colour colour)
-    : upperLeft_(upperLeft), height_(height), width_(width), colour_(colour) {}
+    : upperLeft(upperLeft), rectHeight(height), rectWidth(width), rectColour(colour) {}
 
 void Rectangle::translate(int x, int y) {
-    upperLeft_ = upperLeft_ + Point(x, y);
+    upperLeft = upperLeft + Point(x, y);  
 }
 
 void Rectangle::scale(float heightFactor, float widthFactor) {
-    height_ = static_cast<int>(height_ * heightFactor);
-    width_ = static_cast<int>(width_ * widthFactor);
+    rectHeight *= heightFactor;
+    rectWidth *= widthFactor;
 }
 
 void Rectangle::change(Rectangle::Colour newColour) {
-    colour_ = newColour;
+    rectColour = newColour;
 }
 
 Rectangle::Colour Rectangle::colour() const {
-    return colour_;
+    return rectColour;
 }
 
-Point Rectangle::position() const {
-    return upperLeft_;
+Point Rectangle::point() const {
+    return upperLeft;
 }
 
 int Rectangle::width() const {
-    return width_;
+    return rectWidth;
 }
 
 int Rectangle::height() const {
-    return height_;
+    return rectHeight;
 }
 
 std::istream &operator>>(std::istream &in, Rectangle &rectangle) {
     int x, y, height, width;
-    char colourChar;
-    in >> colourChar >> x >> y >> height >> width;
+    std::string colour;
+    in >> x >> y >> height >> width >> colour;
 
-    Rectangle::Colour colour;
-    switch (colourChar) {
-        case 'r': colour = Rectangle::Colour::Red; break;
-        case 'g': colour = Rectangle::Colour::Green; break;
-        case 'b': colour = Rectangle::Colour::Blue; break;
-        case 'o': colour = Rectangle::Colour::Orange; break;
-        case 'y': colour = Rectangle::Colour::Yellow; break;
-        case 'a': colour = Rectangle::Colour::Black; break;
-        case 'w': colour = Rectangle::Colour::White; break;
-        default: return in;
+    // Default color is Black
+    Rectangle::Colour rectColour = Rectangle::Colour::Black;
+
+    // Matching the color string with valid color names
+    if (colour == "Red") {
+        rectColour = Rectangle::Colour::Red;
+    }
+    else if (colour == "Green") {
+        rectColour = Rectangle::Colour::Green;
+    }
+    else if (colour == "Blue") {
+        rectColour = Rectangle::Colour::Blue;
+    }
+    else if (colour == "Orange") {
+        rectColour = Rectangle::Colour::Orange;
+    }
+    else if (colour == "Yellow") {
+        rectColour = Rectangle::Colour::Yellow;
+    }
+    else if (colour == "Black") {
+        rectColour = Rectangle::Colour::Black;
+    }
+    else if (colour == "White") {
+        rectColour = Rectangle::Colour::White;
+    }
+    else {
+        // Warn the user about the invalid color and use the default (Black)
+        std::cerr << "Warning: Unknown colour '" << colour << "'; defaulting to Black.\n";
     }
 
-    rectangle = Rectangle(Point(x, y), height, width, colour);
+    // Set the rectangle with the corresponding values
+    rectangle = Rectangle(Point(x, y), height, width, rectColour);
     return in;
 }
 
 std::ostream &operator<<(std::ostream &out, const Rectangle &rectangle) {
-    char colourChar;
-    switch (rectangle.colour()) {
-        case Rectangle::Colour::Red: colourChar = 'r'; break;
-        case Rectangle::Colour::Green: colourChar = 'g'; break;
-        case Rectangle::Colour::Blue: colourChar = 'b'; break;
-        case Rectangle::Colour::Orange: colourChar = 'o'; break;
-        case Rectangle::Colour::Yellow: colourChar = 'y'; break;
-        case Rectangle::Colour::Black: colourChar = 'a'; break;
-        case Rectangle::Colour::White: colourChar = 'w'; break;
+    out << rectangle.upperLeft.x() << " " << rectangle.upperLeft.y() << " "
+        << rectangle.height() << " " << rectangle.width() << " ";
+
+    std::string colour;
+    if (rectangle.colour() == Rectangle::Colour::Red) {
+        colour = "Red";
+    } else if (rectangle.colour() == Rectangle::Colour::Green) {
+        colour = "Green";
+    } else if (rectangle.colour() == Rectangle::Colour::Blue) {
+        colour = "Blue";
+    } else if (rectangle.colour() == Rectangle::Colour::Orange) {
+        colour = "Orange";
+    } else if (rectangle.colour() == Rectangle::Colour::Yellow) {
+        colour = "Yellow";
+    } else if (rectangle.colour() == Rectangle::Colour::Black) {
+        colour = "Black";
+    } else if (rectangle.colour() == Rectangle::Colour::White) {
+        colour = "White";
     }
 
-    out << colourChar << " " << rectangle.position().x() << " " << rectangle.position().y()
-        << " " << rectangle.height() << " " << rectangle.width();
-    
+    out << colour;
     return out;
 }

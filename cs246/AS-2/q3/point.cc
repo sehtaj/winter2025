@@ -1,19 +1,20 @@
 #include "point.h"
 
-Point::Point(int x, int y) : a(x), b(y) {}
+Point::Point(int x, int y) : xCoord(x), yCoord(y) {}
 
 int Point::x() const {
-    return a;
+    return xCoord;
 }
 
 int Point::y() const {
-    return b;
+    return yCoord;
 }
 
 Point Point::operator+(const Point &other) {
-    return Point(x() + other.x(), y() + other.y()); 
+    return Point(xCoord + other.x(), yCoord + other.y());
 }
 
 std::ostream &operator<<(std::ostream &out, const Point &point) {
-    out << "(" << point.x() << ", " << point.y() << ")"; 
+    out << "(" << point.x() << ", " << point.y() << ")";
+    return out;
 }
